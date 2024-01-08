@@ -1,0 +1,94 @@
+body {
+    // font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    font-family: "Qanelas";
+
+    background: #1e2538;
+    color: #fff;
+    &.locked {
+        overflow: hidden;
+    }
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+h2 {
+    // font-weight: 600;
+    // font-size: 50px;
+    // padding: 50px 0;
+    // text-align: center;
+}
+
+.loading {
+    img {
+        max-width: 50px;
+        display: block;
+        margin: 0 auto;
+
+        position: relative;
+        top: 100px;
+    }
+}
+
+// SECTION STYLES
+
+section {
+    padding-bottom: 40px;
+}
+
+.section {
+    /* .section__top */
+    &__top {
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        flex-wrap: wrap;
+        // padding: 30px 0;
+        padding-bottom: 30px;
+    }
+    /* .section__title */
+    &__title {
+        color: #fff;
+        font-size: clamp(2rem, 1.286rem + 3.17vw, 4.063rem);
+        font-weight: 900;
+        
+        margin-right: auto;
+    }
+    /* .section__menu */
+    &__menu {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        @media (max-width: 992px) {
+            width: 100%;
+            padding-bottom: 20px;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+    }
+    /* .section__menu-link */
+    &__menu-link {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 18px;
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: color 0.3s ease;
+        &:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 15px;
+        }
+    }
+}

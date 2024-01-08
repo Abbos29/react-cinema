@@ -1,0 +1,95 @@
+.kino {
+    /* .kino__wrapper */
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: 480px) {
+            // grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    /* .kino__card */
+    &__card {
+        display: flex;
+        flex-direction: column;
+    }
+    /* .kino__img */
+    &__img {
+        border-radius: 10px;
+        position: relative;
+        height: 100%;
+        max-height: fit-content;
+
+        img {
+            border-radius: 10px;
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+    }
+    /* .kino__rating */
+    &__rating {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+        border-radius: 5px;
+        background: #89cb36;
+
+        padding: 6px 14px;
+
+        @media (max-width: 480px) {
+            font-size: 12px;
+            padding: 6px 10px;
+        }
+    }
+    /* .kino__name */
+    &__name {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+
+        padding: 6px 0 10px;
+
+        max-height: 1.8em; /* Высота для двух строк с учетом линейного интервала (1.8em для одной строки) */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Добавляет многоточие, если текст обрезается */
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Ограничивает количество отображаемых строк */
+        -webkit-box-orient: vertical;
+        line-height: 1.4;
+
+        @media (max-width: 480px) {
+            font-size: 15px;
+        }
+    }
+    /* .kino__genre */
+    &__genre {
+        color: #f2f60f;
+        font-size: 15px;
+        font-weight: 400;
+
+        max-height: 1.8em; /* Высота для двух строк с учетом линейного интервала (1.8em для одной строки) */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Добавляет многоточие, если текст обрезается */
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Ограничивает количество отображаемых строк */
+        -webkit-box-orient: vertical;
+        line-height: 1.4;
+
+        @media (max-width: 480px) {
+            font-size: 12px;
+        }
+    }
+}
