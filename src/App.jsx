@@ -11,6 +11,7 @@ import Actors from './Pages/Actors';
 import News from './Pages/News';
 import Collections from './Pages/Collections';
 import Category from './Pages/Category';
+import Movie from './Pages/Movie';
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         <Route path='/news' element={<News />} />
         <Route path='/collections' element={<Collections />} />
         <Route path='/category' element={<Category />} />
+        <Route path='/movie/:filmId' element={<Movie/>} />
       </Routes>
     </div>
   );

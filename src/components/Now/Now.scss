@@ -92,4 +92,29 @@
             font-size: 12px;
         }
     }
+
+    &__btn {
+        color: #fff;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 166.5%; /* 29.97px */
+
+        border-radius: 10px;
+        border: 2px solid #fff;
+
+        padding: 15px 40px;
+        display: block;
+        margin: 0 auto;
+        width: max-content;
+        margin-top: 50px;
+
+        cursor: pointer;
+
+        transition: all .3s;
+        &:hover {
+            background-color: #fff;
+            color: #000;
+        }
+    }
 }

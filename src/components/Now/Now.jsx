@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import './Now.scss'
+import { Link } from 'react-router-dom';
 
 const Now = () => {
     const [movieData, setMovieData] = useState([]);
@@ -9,19 +10,24 @@ const Now = () => {
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
-                const response = await axios.get('https://kinopoiskapiunofficial.tech/api/v2.2/films/top', {
-                    headers: {
-                        'X-API-KEY': 'b84dec2d-65e6-4747-9164-27a9ff2b1edb',
-                        'Content-Type': 'application/json',
-                    },
-                    params: {
-                        page: 1,
-                        type: 'TOP_250_BEST_FILMS',
-                    },
-                });
+                let allMovies = [];
 
-                setMovieData(response.data.films);
-                console.log(response.data.films[1]);
+                for (let page = 1; page <= 1; page++) {
+                    const response = await axios.get('https://kinopoiskapiunofficial.tech/api/v2.2/films/top', {
+                        headers: {
+                            'X-API-KEY': 'b84dec2d-65e6-4747-9164-27a9ff2b1edb',
+                            'Content-Type': 'application/json',
+                        },
+                        params: {
+                            page,
+                            type: 'TOP_250_BEST_FILMS',
+                        },
+                    });
+
+                    allMovies = [...allMovies, ...response.data.films];
+                }
+
+                setMovieData(allMovies);
             } catch (error) {
                 console.error('Error fetching movie data:', error);
             }
@@ -30,7 +36,7 @@ const Now = () => {
         fetchMovieData();
     }, []);
 
-    if (movieData.length === 0) {
+    if (!movieData.length) {
         return (
             <div className='loading'>
                 <img src="https://i.stack.imgur.com/kOnzy.gif" alt="" />
@@ -38,8 +44,8 @@ const Now = () => {
         );
     }
 
-    const startIndex = 1; // Индекс, с которого начинаем
-    const moviesDataList = movieData.slice(startIndex);
+    const startIndex = 1;
+    const moviesDataList = movieData.slice(startIndex, startIndex + 50);
 
 
     return (
@@ -59,16 +65,18 @@ const Now = () => {
                 </div>
                 <div className="kino__wrapper">
                     {moviesDataList.map((movie) => (
-                        <div className="kino__card" key={movie.filmId}>
+                        <Link to={`/movie/${movie?.filmId}`} className="kino__card" key={movie.filmId}>
                             <div className="kino__img">
                                 <img src={movie.posterUrlPreview} alt="img" />
                                 <p className="kino__rating">{movie.rating}</p>
                             </div>
                             <h3 className="kino__name">{movie.nameRu}</h3>
                             <p className="kino__genre">{movie.genres.map((genre) => genre.genre).join(', ')}</p>
-                        </div>
+                        </Link>
                     ))}
                 </div>
+
+                <div className="kino__btn">Все новинки</div>
             </div>
         </section>
     );
